@@ -87,7 +87,7 @@ if __name__ == "__main__":
     #simulation_runner = SimulationRunner("femnist_multikrum_defense.json")
     #simulation_runner = SimulationRunner("femnist_compare_all.json")
     simulation_runner = SimulationRunner("femnist_compare_all_IID.json")
-    #simulation_runner = SimulationRunner("femnist_compare_NIID.json")
+    #simulation_runner = SimulationRunner("femnist_compare_all_NIID.json")
 
 
     simulation_runner.run()
