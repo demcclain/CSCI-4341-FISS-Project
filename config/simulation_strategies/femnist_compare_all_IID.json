@@ -1,0 +1,112 @@
+{
+    "shared_settings": {
+        "strict_mode": "true",
+        "dataset_keyword": "femnist_iid",
+        "use_llm": "false",
+        "num_of_rounds": 50,
+        "num_of_clients": 8,
+        "num_of_malicious_clients": 2,
+        "attack_type": "label_flipping",
+        "attack_ratio": 1.0,
+        "num_std_dev": 3,
+        "gaussian_noise_mean": 0,
+        "gaussian_noise_std": 50,
+        "show_plots": "false",
+        "save_plots": "true",
+        "save_csv": "true",
+        "training_device": "cpu",
+        "cpus_per_client": 1,
+        "gpus_per_client": 0,
+        "trust_threshold": 0.15,
+        "reputation_threshold": 0.15,
+        "beta_value": 0.75,
+        "num_of_clusters": 1,
+        "model_type": "cnn",
+        "Kp": 1.0,
+        "Ki": 0.05,
+        "Kd": 0.05,
+        "num_krum_selections": 6,
+        "training_subset_fraction": 0.9,
+        "min_fit_clients": 8,
+        "min_evaluate_clients": 8,
+        "min_available_clients": 8,
+        "evaluate_metrics_aggregation_fn": "weighted_average",
+        "num_of_client_epochs": 3,
+        "batch_size": 32,
+        "preserve_dataset": "true",
+        "begin_removing_from_round": 5
+    },
+    "simulation_strategies": [
+        {
+            "description": "Baseline — clean training (no malicious clients)",
+            "aggregation_strategy_keyword": "pid",
+            "num_of_malicious_clients": 0,
+            "remove_clients": "false"
+        },
+        {
+            "description": "Label flipping attack — no defense",
+            "aggregation_strategy_keyword": "pid",
+            "attack_type": "label_flipping",
+            "num_of_malicious_clients": 2,
+            "attack_ratio": 1.0,
+            "remove_clients": "false",
+            "num_std_dev": 3
+        },
+        {
+            "description": "Multi-Krum defense — default robust setting",
+            "aggregation_strategy_keyword": "multi-krum",
+            "attack_type": "label_flipping",
+            "num_of_malicious_clients": 2,
+            "attack_ratio": 1.0,
+            "remove_clients": "true",
+            "begin_removing_from_round": 5,
+            "num_krum_selections": 6
+        },
+        {
+            "description": "PID (standardized) defense — default gains",
+            "aggregation_strategy_keyword": "pid_standardized",
+            "attack_type": "label_flipping",
+            "num_of_malicious_clients": 2,
+            "attack_ratio": 1.0,
+            "remove_clients": "true",
+            "begin_removing_from_round": 5,
+            "num_std_dev": 2,
+            "Kp": 1.0,
+            "Ki": 0.05,
+            "Kd": 0.05
+        },
+        {
+            "description": "Multi-Krum sensitivity — fewer selections (more aggressive)",
+            "aggregation_strategy_keyword": "multi-krum",
+            "attack_type": "label_flipping",
+            "num_of_malicious_clients": 2,
+            "attack_ratio": 1.0,
+            "remove_clients": "true",
+            "begin_removing_from_round": 5,
+            "num_krum_selections": 4
+        },
+        {
+            "description": "Multi-Krum sensitivity — more selections (safer)",
+            "aggregation_strategy_keyword": "multi-krum",
+            "attack_type": "label_flipping",
+            "num_of_malicious_clients": 2,
+            "attack_ratio": 1.0,
+            "remove_clients": "true",
+            "begin_removing_from_round": 5,
+            "num_krum_selections": 8
+        },
+        {
+            "description": "PID tuned — higher proportional & integral (faster response)",
+            "aggregation_strategy_keyword": "pid_standardized",
+            "attack_type": "label_flipping",
+            "num_of_malicious_clients": 2,
+            "attack_ratio": 1.0,
+            "remove_clients": "true",
+            "begin_removing_from_round": 5,
+            "num_std_dev": 2,
+            "Kp": 1.5,
+            "Ki": 0.1,
+            "Kd": 0.02
+        }
+    ]
+}

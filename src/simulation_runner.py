@@ -81,11 +81,13 @@ class SimulationRunner:
 
 if __name__ == "__main__":
     """Put the filename of the json strategy from config/simulation_strategies here"""
-    simulation_runner = SimulationRunner("femnist_baseline.json")
+    #simulation_runner = SimulationRunner("femnist_baseline.json")
     #simulation_runner = SimulationRunner("femnist_label_flipping_attack.json")
     #simulation_runner = SimulationRunner("femnist_pid_defense.json")
     #simulation_runner = SimulationRunner("femnist_multikrum_defense.json")
     #simulation_runner = SimulationRunner("femnist_compare_all.json")
+    simulation_runner = SimulationRunner("femnist_compare_all_IID.json")
+    #simulation_runner = SimulationRunner("femnist_compare_NIID.json")
 
 
     simulation_runner.run()
