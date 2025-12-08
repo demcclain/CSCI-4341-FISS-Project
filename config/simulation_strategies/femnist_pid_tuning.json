@@ -24,22 +24,9 @@
         "evaluate_metrics_aggregation_fn": "weighted_average",
         "num_of_client_epochs": 3,
         "batch_size": 32,
-        "preserve_dataset": "true"
+        "preserve_dataset": "false"
     },
     "simulation_strategies": [
-        {
-            "description": "Baseline — clean training (no malicious clients)",
-            "aggregation_strategy_keyword": "pid_standardized",
-            "num_of_malicious_clients": 0,
-            "remove_clients": "false"
-        },
-        {
-            "description": "Attack — no defense (baseline)",
-            "aggregation_strategy_keyword": "pid_standardized",
-            "attack_type": "label_flipping",
-            "num_of_malicious_clients": 2,
-            "remove_clients": "false"
-        },
         {
             "description": "Multi-Krum (k=8 - perfect estimate of 2 malicious)",
             "aggregation_strategy_keyword": "multi-krum",
@@ -67,67 +54,6 @@
             "begin_removing_from_round": 5,
             "num_krum_selections": 7
         },
-        {
-            "description": "Trust-based defense",
-            "aggregation_strategy_keyword": "trust",
-            "attack_type": "label_flipping",
-            "num_of_malicious_clients": 2,
-            "remove_clients": "true",
-            "begin_removing_from_round": 5,
-            "trust_threshold": 0.15,
-            "beta_value": 0.75
-        },
-        {
-            "description": "Trimmed Mean defense",
-            "aggregation_strategy_keyword": "trimmed_mean",
-            "attack_type": "label_flipping",
-            "num_of_malicious_clients": 2,
-            "remove_clients": "true",
-            "begin_removing_from_round": 5,
-            "trim_ratio": 0.2
-        },
-        {
-            "description": "PID (default params)",
-            "aggregation_strategy_keyword": "pid_standardized",
-            "attack_type": "label_flipping",
-            "num_of_malicious_clients": 2,
-            "remove_clients": "true",
-            "begin_removing_from_round": 5,
-            "num_std_dev": 2,
-            "Kp": 1.0,
-            "Ki": 0.05,
-            "Kd": 0.05
-        },
-        {
-            "description": "PID (higher Kp — more responsive to current distance)",
-            "aggregation_strategy_keyword": "pid_standardized",
-            "attack_type": "label_flipping",
-            "num_of_malicious_clients": 2,
-            "remove_clients": "true",
-            "begin_removing_from_round": 5,
-            "num_std_dev": 2,
-            "Kp": 2.0,
-            "Ki": 0.05,
-            "Kd": 0.05
-        },
-        {
-            "description": "PID (higher Ki — emphasizes accumulated distance)",
-            "aggregation_strategy_keyword": "pid_standardized",
-            "attack_type": "label_flipping",
-            "num_of_malicious_clients": 2,
-            "remove_clients": "true",
-            "begin_removing_from_round": 5,
-            "num_std_dev": 2,
-            "Kp": 1.0,
-            "Ki": 0.15,
-            "Kd": 0.05
-        },
-        {
-            "description": "PID (higher Kd — reacts to sudden changes)",
-            "aggregation_strategy_keyword": "pid_standardized",
-            "attack_type": "label_flipping",
-            "num_of_malicious_clients": 2,
-            "remove_clients": "true",
         {
             "description": "PID (threshold 1.0σ - aggressive)",
             "aggregation_strategy_keyword": "pid_standardized",
@@ -160,36 +86,6 @@
             "remove_clients": "true",
             "begin_removing_from_round": 5,
             "num_std_dev": 2.5,
-            "Kp": 1.0,
-            "Ki": 0.05,
-            "Kd": 0.05
-        },  "remove_clients": "true",
-            "begin_removing_from_round": 5,
-            "num_std_dev": 2,
-            "Kp": 1.5,
-            "Ki": 0.1,
-            "Kd": 0.1
-        },
-        {
-            "description": "PID (tighter threshold — more aggressive removal)",
-            "aggregation_strategy_keyword": "pid_standardized",
-            "attack_type": "label_flipping",
-            "num_of_malicious_clients": 2,
-            "remove_clients": "true",
-            "begin_removing_from_round": 5,
-            "num_std_dev": 1.5,
-            "Kp": 1.0,
-            "Ki": 0.05,
-            "Kd": 0.05
-        },
-        {
-            "description": "PID (earlier removal — detect faster)",
-            "aggregation_strategy_keyword": "pid_standardized",
-            "attack_type": "label_flipping",
-            "num_of_malicious_clients": 2,
-            "remove_clients": "true",
-            "begin_removing_from_round": 3,
-            "num_std_dev": 2,
             "Kp": 1.0,
             "Ki": 0.05,
             "Kd": 0.05
