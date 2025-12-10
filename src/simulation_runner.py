@@ -88,7 +88,8 @@ if __name__ == "__main__":
     #simulation_runner = SimulationRunner("femnist_compare_all.json")
     #simulation_runner = SimulationRunner("femnist_compare_all_IID.json")
     #simulation_runner = SimulationRunner("femnist_compare_all_NIID.json")
-    simulation_runner = SimulationRunner("femnist_pid_tuning.json")
+    #simulation_runner = SimulationRunner("femnist_pid_tuning.json")
+    simulation_runner = SimulationRunner("femnist_pid_tuning_niid.json")
 
 
     simulation_runner.run()

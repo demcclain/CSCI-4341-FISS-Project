@@ -1,0 +1,106 @@
+{
+    "shared_settings": {
+        "strict_mode": "true",
+        "dataset_keyword": "femnist_niid",
+        "use_llm": "false",
+        "num_of_rounds": 25,
+        "num_of_clients": 10,
+        "num_of_malicious_clients": 2,
+        "attack_type": "label_flipping",
+        "attack_ratio": 1.0,
+        "gaussian_noise_mean": 0,
+        "gaussian_noise_std": 50,
+        "show_plots": "false",
+        "save_plots": "true",
+        "save_csv": "true",
+        "training_device": "cpu",
+        "cpus_per_client": 1,
+        "gpus_per_client": 0,
+        "model_type": "cnn",
+        "training_subset_fraction": 0.9,
+        "min_fit_clients": 10,
+        "min_evaluate_clients": 10,
+        "min_available_clients": 10,
+        "evaluate_metrics_aggregation_fn": "weighted_average",
+        "num_of_client_epochs": 3,
+        "batch_size": 32,
+        "preserve_dataset": "false"
+    },
+    "simulation_strategies": [
+        {
+            "description": "Multi-Krum (k=8 - perfect estimate of 2 malicious)",
+            "aggregation_strategy_keyword": "multi-krum",
+            "attack_type": "label_flipping",
+            "num_of_malicious_clients": 2,
+            "remove_clients": "true",
+            "begin_removing_from_round": 5,
+            "num_krum_selections": 8
+        },
+        {
+            "description": "Multi-Krum (k=9 - underestimate, keeps 1 malicious)",
+            "aggregation_strategy_keyword": "multi-krum",
+            "attack_type": "label_flipping",
+            "num_of_malicious_clients": 2,
+            "remove_clients": "true",
+            "begin_removing_from_round": 5,
+            "num_krum_selections": 9
+        },
+        {
+            "description": "Multi-Krum (k=7 - overestimate, might remove honest)",
+            "aggregation_strategy_keyword": "multi-krum",
+            "attack_type": "label_flipping",
+            "num_of_malicious_clients": 2,
+            "remove_clients": "true",
+            "begin_removing_from_round": 5,
+            "num_krum_selections": 7
+        },
+        {
+            "description": "PID (threshold 1.0σ - aggressive)",
+            "aggregation_strategy_keyword": "pid_standardized",
+            "attack_type": "label_flipping",
+            "num_of_malicious_clients": 2,
+            "remove_clients": "true",
+            "begin_removing_from_round": 5,
+            "num_std_dev": 1.0,
+            "Kp": 1.0,
+            "Ki": 0.05,
+            "Kd": 0.05
+        },
+        {
+            "description": "PID (threshold 1.5σ - moderate)",
+            "aggregation_strategy_keyword": "pid_standardized",
+            "attack_type": "label_flipping",
+            "num_of_malicious_clients": 2,
+            "remove_clients": "true",
+            "begin_removing_from_round": 5,
+            "num_std_dev": 1.5,
+            "Kp": 1.0,
+            "Ki": 0.05,
+            "Kd": 0.05
+        },
+        {
+            "description": "PID (threshold 2.5σ - conservative)",
+            "aggregation_strategy_keyword": "pid_standardized",
+            "attack_type": "label_flipping",
+            "num_of_malicious_clients": 2,
+            "remove_clients": "true",
+            "begin_removing_from_round": 5,
+            "num_std_dev": 2.5,
+            "Kp": 1.0,
+            "Ki": 0.05,
+            "Kd": 0.05
+        },
+        {
+            "description": "PID (optimized combo — higher Kp+Ki, tighter threshold, earlier removal)",
+            "aggregation_strategy_keyword": "pid_standardized",
+            "attack_type": "label_flipping",
+            "num_of_malicious_clients": 2,
+            "remove_clients": "true",
+            "begin_removing_from_round": 3,
+            "num_std_dev": 1.5,
+            "Kp": 1.5,
+            "Ki": 0.1,
+            "Kd": 0.08
+        }
+    ]
+}
