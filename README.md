@@ -4,11 +4,15 @@ This fork contains added json files and edited code to run them, otherwise it is
 - **`femnist_testing_niid.json`** – NIID FEMNIST evaluation  
 - **`simulation_runner.py`** – slightly modified file to run the json files  
 
-All experiments, metrics, and aggregation strategies in this fork were adapted to work with these two configurations for consistent reproducibility in our study.
+    -- Early tests --
+- **`femnist_baseline.json`**
+- **`femnist_compare_all.json`**
+- **`femnist_compare_all_IID.json`**
+- **`femnist_compare_all_NIID.json`**
+- **`femnist_label_flipping_attack.json`**
+- **`femnist_pid_defense.json`**
 
-
-
-
+  
 [![codecov](https://codecov.io/github/dmitrykoro/fl-execution-framework/graph/badge.svg?token=HJFASRJ43T)](https://codecov.io/github/dmitrykoro/fl-execution-framework)
 # Knowledge Management Framework for Federated Learning
 ### A framework for Federated Learning simulation configuration and execution
